@@ -96,6 +96,10 @@ async fn get_video(Json(request): Json<serde_json::Value>) -> impl IntoResponse 
     let args = vec![Arg::new_with_arg(
         "--output",
         &format!("{}.%(ext)s", video_name),
+    ),
+    Arg::new_with_arg(
+        "--add-header", 
+        "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     )];
     let path = PathBuf::from("/tmp");
     let ytd =
